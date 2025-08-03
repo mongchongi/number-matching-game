@@ -14,16 +14,25 @@ function generateRandomNumber() {
   console.log('🚀 ~ generateRandomNumber ~ randomAnswer:', randomAnswer);
 }
 
+function removeHintMessageClass() {
+  hintMessage.classList.remove('hint-message--up');
+  hintMessage.classList.remove('hint-message--down');
+  hintMessage.classList.remove('hint-message--duplication');
+}
+
+function showHintMessage(message, modifier) {
+  removeHintMessageClass();
+  hintMessage.classList.add(`hint-message--${modifier}`);
+  hintMessage.textContent = message;
+  numberField.value = '';
+  numberField.focus();
+}
+
 function handlePlayGame() {
   const userAnswer = numberField.value;
 
   if (!userAnswer || userAnswer < 1 || userAnswer > 100) {
-    hintMessage.classList.remove('hint-message--up');
-    hintMessage.classList.remove('hint-message--down');
-    hintMessage.classList.add('hint-message--duplication');
-    hintMessage.textContent = '1부터 100 사이 숫자를 입력해 주세요!';
-    numberField.value = '';
-    numberField.focus();
+    showHintMessage('1부터 100 사이 숫자를 입력해 주세요!', 'duplication');
     return;
   }
 
@@ -31,13 +40,9 @@ function handlePlayGame() {
   chanceRemainingCount.textContent = chanceCount;
 
   if (userAnswer > randomAnswer) {
-    hintMessage.classList.remove('hint-message--up');
-    hintMessage.classList.add('hint-message--down');
-    hintMessage.textContent = 'DOWN! 더 작은 숫자입니다!';
+    showHintMessage('DOWN! 더 작은 숫자입니다!', 'down');
   } else if (userAnswer < randomAnswer) {
-    hintMessage.classList.remove('hint-message--down');
-    hintMessage.classList.add('hint-message--up');
-    hintMessage.textContent = 'DOWN! 더 큰 숫자입니다!';
+    showHintMessage('DOWN! 더 큰 숫자입니다!', 'up');
   } else {
     modalBackground.classList.add('modal--visible');
     modalTitle.textContent = '축하합니다!';
@@ -52,9 +57,6 @@ function handlePlayGame() {
     modalMessage.textContent = `정답은 ${randomAnswer}입니다. 다시 도전해 보세요!`;
     confirmButton.disabled = true;
   }
-
-  numberField.value = '';
-  numberField.focus();
 }
 
 generateRandomNumber();
