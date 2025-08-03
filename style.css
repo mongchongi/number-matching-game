@@ -144,3 +144,13 @@ button {
 .reset-button:hover {
   background: rgba(81, 124, 0, 1);
 }
+
+@media all and (max-width: 28.75rem) {
+  .game-board {
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
