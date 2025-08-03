@@ -17,6 +17,16 @@ function generateRandomNumber() {
 function handlePlayGame() {
   const userAnswer = numberField.value;
 
+  if (!userAnswer || userAnswer < 1 || userAnswer > 100) {
+    hintMessage.classList.remove('hint-message--up');
+    hintMessage.classList.remove('hint-message--down');
+    hintMessage.classList.add('hint-message--duplication');
+    hintMessage.textContent = '1부터 100 사이 숫자를 입력해 주세요!';
+    numberField.value = '';
+    numberField.focus();
+    return;
+  }
+
   chanceCount--;
   chanceRemainingCount.textContent = chanceCount;
 
