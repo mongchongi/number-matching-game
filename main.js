@@ -14,7 +14,6 @@ const answerRecords = [];
 
 function generateRandomNumber() {
   randomAnswer = Math.floor(Math.random() * 100) + 1;
-  console.log('🚀 ~ generateRandomNumber ~ randomAnswer:', randomAnswer);
 }
 
 function removeHintMessageClass() {
