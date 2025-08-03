@@ -10,6 +10,7 @@ const resetButton = document.querySelector('.reset-button');
 
 let randomAnswer = 0;
 let chanceCount = 5;
+const answerRecords = [];
 
 function generateRandomNumber() {
   randomAnswer = Math.floor(Math.random() * 100) + 1;
@@ -19,7 +20,7 @@ function generateRandomNumber() {
 function removeHintMessageClass() {
   hintMessage.classList.remove('hint-message--up');
   hintMessage.classList.remove('hint-message--down');
-  hintMessage.classList.remove('hint-message--duplication');
+  hintMessage.classList.remove('hint-message--invalid');
 }
 
 function showHintMessage(message, modifier) {
@@ -34,7 +35,12 @@ function handlePlayGame() {
   const userAnswer = numberField.value;
 
   if (!userAnswer || userAnswer < 1 || userAnswer > 100) {
-    showHintMessage('1부터 100 사이 숫자를 입력해 주세요!', 'duplication');
+    showHintMessage('1부터 100 사이 숫자를 입력해 주세요!', 'invalid');
+    return;
+  }
+
+  if (answerRecords.includes(userAnswer)) {
+    showHintMessage('이미 입력한 숫자입니다!', 'invalid');
     return;
   }
 
@@ -59,6 +65,8 @@ function handlePlayGame() {
     modalMessage.textContent = `정답은 ${randomAnswer}입니다. 다시 도전해 보세요!`;
     confirmButton.disabled = true;
   }
+
+  answerRecords.push(userAnswer);
 }
 
 function handleResetGame() {
@@ -74,6 +82,8 @@ function handleResetGame() {
   hintMessage.textContent = '';
 
   numberField.value = '';
+
+  answerRecords.splice(0);
 
   removeHintMessageClass();
   generateRandomNumber();

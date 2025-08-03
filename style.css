@@ -94,7 +94,7 @@ button {
   background: rgba(92, 182, 214, 0.1);
 }
 
-.hint-message--duplication {
+.hint-message--invalid {
   display: flex;
   color: rgba(0, 0, 0, 1);
   background: rgba(0, 0, 0, 0.1);
