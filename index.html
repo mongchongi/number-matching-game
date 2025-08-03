@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="modal__background">
+      <div class="modal">
+        <h2 class="modal__title">축하합니다!</h2>
+        <p class="modal__message">정답 77을(를) 맞추셨습니다!</p>
+        <button class="modal__replay-button" type="button">다시 하기</button>
+      </div>
+    </div>
+    <main class="game-board">
+      <section>
+        <h1 class="title">숫자 맞추기 게임</h1>
+        <p class="subtitle">1부터 100 사이 숫자를 맞춰보세요!</p>
+        <p class="chance">남은 기회 : <span class="chance__remaining-count">5</span>번</p>
+        <p class="hint-message"></p>
+        <div class="answer-input">
+          <input class="answer-input__number-field" type="number" placeholder="숫자를 입력하세요 (1-100)" />
+          <button class="answer-input__confirm-button" type="button">확인</button>
+        </div>
+        <button class="reset-button" type="button">새 게임 시작</button>
+      </section>
+    </main>
     <script src="./main.js"></script>
   </body>
 </html>

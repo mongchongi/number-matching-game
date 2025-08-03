@@ -1,0 +1,146 @@
+body {
+  background: rgba(195, 249, 255, 0.3);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  height: 2.5rem;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal__background {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 1);
+  text-align: center;
+  padding: 0.5rem 2rem 1.875rem;
+  border-radius: 1rem;
+}
+
+.modal--visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__replay-button {
+  padding: 0.5rem 1rem;
+  background: rgba(92, 182, 214, 1);
+}
+
+.game-board {
+  background: rgba(255, 255, 255, 1);
+  max-width: 25rem;
+  flex-grow: 1;
+  text-align: center;
+  padding: 1rem 2rem 2.5rem;
+  border-radius: 1rem;
+}
+
+.title {
+  margin-bottom: 0.625rem;
+}
+
+.subtitle {
+  margin-top: 0.625rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.chance {
+  text-align: start;
+  font-weight: bold;
+}
+
+.hint-message {
+  height: 2.5rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint-message--up {
+  display: flex;
+  color: rgba(220, 20, 60, 1);
+  background: rgba(220, 20, 60, 0.1);
+}
+
+.hint-message--down {
+  display: flex;
+  color: rgba(92, 182, 214, 1);
+  background: rgba(92, 182, 214, 0.1);
+}
+
+.hint-message--duplication {
+  display: flex;
+  color: rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.answer-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.answer-input__number-field {
+  border: 0.125rem solid rgba(0, 0, 0, 1);
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.answer-input__number-field::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.answer-input__number-field::-webkit-inner-spin-button {
+  display: none;
+}
+
+.answer-input__confirm-button {
+  font-size: 1.125rem;
+  background: rgba(92, 182, 214, 1);
+}
+
+.answer-input__confirm-button:hover,
+.modal__replay-button:hover {
+  background: rgba(73, 126, 145, 1);
+}
+
+.reset-button {
+  width: 100%;
+  font-size: 1.125rem;
+  background: rgba(137, 177, 0, 1);
+  margin-top: 1rem;
+}
+
+.reset-button:hover {
+  background: rgba(81, 124, 0, 1);
+}
