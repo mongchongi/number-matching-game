@@ -36,6 +36,13 @@ function handlePlayGame() {
     return;
   }
 
+  if (chanceCount < 1) {
+    modalBackground.classList.add('modal--visible');
+    modalTitle.textContent = '게임 종료';
+    modalMessage.textContent = `정답은 ${randomAnswer}입니다. 다시 도전해 보세요!`;
+    confirmButton.disabled = true;
+  }
+
   numberField.value = '';
   numberField.focus();
 }
