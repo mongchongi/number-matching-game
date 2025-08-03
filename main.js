@@ -1,3 +1,6 @@
+const modalBackground = document.querySelector('.modal__background');
+const modalTitle = document.querySelector('.modal__title');
+const modalMessage = document.querySelector('.modal__message');
 const chanceRemainingCount = document.querySelector('.chance__remaining-count');
 const hintMessage = document.querySelector('.hint-message');
 const numberField = document.querySelector('.answer-input__number-field');
@@ -25,6 +28,12 @@ function handlePlayGame() {
     hintMessage.classList.remove('hint-message--down');
     hintMessage.classList.add('hint-message--up');
     hintMessage.textContent = 'DOWN! 더 큰 숫자입니다!';
+  } else {
+    modalBackground.classList.add('modal--visible');
+    modalTitle.textContent = '축하합니다!';
+    modalMessage.textContent = `정답 ${randomAnswer}을(를) 맞추셨습니다!`;
+    confirmButton.disabled = true;
+    return;
   }
 
   numberField.value = '';
