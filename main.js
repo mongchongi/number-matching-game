@@ -1,10 +1,12 @@
 const modalBackground = document.querySelector('.modal__background');
 const modalTitle = document.querySelector('.modal__title');
 const modalMessage = document.querySelector('.modal__message');
+const modalReplayButton = document.querySelector('.modal__replay-button');
 const chanceRemainingCount = document.querySelector('.chance__remaining-count');
 const hintMessage = document.querySelector('.hint-message');
 const numberField = document.querySelector('.answer-input__number-field');
 const confirmButton = document.querySelector('.answer-input__confirm-button');
+const resetButton = document.querySelector('.reset-button');
 
 let randomAnswer = 0;
 let chanceCount = 5;
@@ -59,6 +61,26 @@ function handlePlayGame() {
   }
 }
 
+function handleResetGame() {
+  chanceCount = 5;
+  chanceRemainingCount.textContent = chanceCount;
+
+  modalBackground.classList.remove('modal--visible');
+  modalTitle.textContent = '';
+  modalMessage.textContent = '';
+
+  confirmButton.disabled = false;
+
+  hintMessage.textContent = '';
+
+  numberField.value = '';
+
+  removeHintMessageClass();
+  generateRandomNumber();
+}
+
 generateRandomNumber();
 
 confirmButton.addEventListener('click', handlePlayGame);
+resetButton.addEventListener('click', handleResetGame);
+modalReplayButton.addEventListener('click', handleResetGame);
